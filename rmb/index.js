@@ -1,6 +1,9 @@
 // Import necessary modules
 import express from "express";
 import {MongoClient} from "mongodb";
+import { config } from "dotenv";
+import { writeFileSync } from "fs";
+import { randomBytes } from "crypto";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import playersRouter from "./routes/PlayerRouter.js";
@@ -8,7 +11,23 @@ import userRouter from "./routes/UserRouter.js";
 
 
 // Load environment variables from .env file
-dotenv.config();
+// dotenv.config();
+
+// Load environment variables from .env file
+config();
+
+// Check if SECRETKEY is not set
+if (!process.env.SECRETKEY) {
+    // Generate a random 32-byte key
+    const secretKey = randomBytes(32).toString("hex");
+    console.log(`Generated secret key: ${secretKey}`);
+
+    // Update .env file with the new secret key
+    writeFileSync(".env", `SECRETKEY=${secretKey}\n`, { flag: "a" });
+
+    // Update process.env to use the new secret key
+    process.env.SECRETKEY = secretKey;
+}
 
 // Create an Express app
 const app = express();
