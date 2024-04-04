@@ -1,5 +1,5 @@
 // Import the MongoDB client and ObjectId
-import {client} from "../index.js"
+import {client} from "../server.js"
 import {ObjectId} from "mongodb";
 
 // Function to retrieve players based on request parameters

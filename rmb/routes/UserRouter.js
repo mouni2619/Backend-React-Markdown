@@ -3,7 +3,7 @@ import { generateHashedPassword,createUser,getUserByEmail,findUser,passwordReset
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
-import { client } from "../index.js";
+import { client } from "../server.js";
 import {ObjectId} from "mongodb";
 // Create a new router instance
 const router = express.Router();

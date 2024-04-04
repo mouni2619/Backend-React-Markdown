@@ -1,5 +1,5 @@
 // Import the MongoDB client, bcrypt, and ObjectId
-import { client } from "../index.js";
+import { client } from "../server.js";
 import bcrypt from "bcrypt";
 import { ObjectId } from "mongodb";
 

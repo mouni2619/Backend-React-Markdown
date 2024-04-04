@@ -20,7 +20,7 @@ config();
 if (!process.env.SECRETKEY) {
     // Generate a random 32-byte key
     const secretKey = randomBytes(32).toString("hex");
-    console.log(`Generated secret key: ${secretKey}`);
+    
 
     // Update .env file with the new secret key
     writeFileSync(".env", `SECRETKEY=${secretKey}\n`, { flag: "a" });
